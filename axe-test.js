@@ -8,7 +8,7 @@ var driver = new WebDriver.Builder()
 driver.manage().timeouts().setScriptTimeout(30000);
 
 driver
-  .get('https://dequeuniversity.com/demo/mars/')
+  .get('https://joe64.dev.cpanel.net:2087/')
   .then(function () {
     AxeBuilder(driver)
       .analyze(function (results) {
