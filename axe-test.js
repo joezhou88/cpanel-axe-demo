@@ -7,8 +7,15 @@ var driver = new WebDriver.Builder()
 
 driver.manage().timeouts().setScriptTimeout(30000);
 
+driver.get("https://joe64.dev.cpanel.net:2087/");
+driver.findElement({id:'user'}).sendKeys("joe");
+driver.findElement({id:'pass'}).sendKeys("cpanel1");
+driver.findElement({id:'login_submit'}).click();
+
+driver.sleep(5000);
+
 driver
-  .get('https://joe64.dev.cpanel.net:2087/')
+  .get(driver.getCurrentUrl())
   .then(function () {
     AxeBuilder(driver)
       .analyze(function (results) {
