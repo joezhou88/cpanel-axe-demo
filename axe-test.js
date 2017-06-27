@@ -1,5 +1,9 @@
 var AxeBuilder = require('axe-webdriverjs');
 var WebDriver = require('selenium-webdriver');
+var fs = require('fs');
+
+var contents = fs.readFileSync("config.json");
+var configs = JSON.parse(contents);
 
 var driver = new WebDriver.Builder()
   .forBrowser('firefox')
@@ -7,9 +11,9 @@ var driver = new WebDriver.Builder()
 
 driver.manage().timeouts().setScriptTimeout(30000);
 
-driver.get("https://joe64.dev.cpanel.net:2083/");
-driver.findElement({id:'user'}).sendKeys("joe");
-driver.findElement({id:'pass'}).sendKeys("cpanel1");
+driver.get(configs.url);
+driver.findElement({id:'user'}).sendKeys(configs.user);
+driver.findElement({id:'pass'}).sendKeys(configs.password);
 driver.findElement({id:'login_submit'}).click();
 
 driver.sleep(5000);
