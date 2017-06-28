@@ -11,18 +11,27 @@ var driver = new WebDriver.Builder()
 
 driver.manage().timeouts().setScriptTimeout(30000);
 
-driver.get(configs.url);
-driver.findElement({id:'user'}).sendKeys(configs.user);
-driver.findElement({id:'pass'}).sendKeys(configs.password);
-driver.findElement({id:'login_submit'}).click();
+driver.get(configs.server).then(function() {
+  driver.findElement({id:'user'}).sendKeys(configs.user);
+  driver.findElement({id:'pass'}).sendKeys(configs.password);
+  driver.findElement({id:'login_submit'}).click();
+});
 
-driver.sleep(5000);
+driver.sleep(1000);
 
-driver
-  .get(driver.getCurrentUrl())
-  .then(function () {
-    AxeBuilder(driver)
-      .analyze(function (results) {
-        console.log(results);
-      });
-  });
+driver.getCurrentUrl().then(function(url) {
+  var page = url;
+  if ( configs.page.length > 0 ) {
+    var pots = url.split("/");
+    page = pots[0].concat("//", pots[2], "/", pots[3], configs.page);
+  }
+
+  driver
+    .get(page)
+    .then(function () {
+      AxeBuilder(driver)
+        .analyze(function (results) {
+          console.log(results);
+        });
+    });
+});
