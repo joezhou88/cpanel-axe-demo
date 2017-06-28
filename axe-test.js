@@ -9,6 +9,7 @@ var driver = new WebDriver.Builder()
   .forBrowser('firefox')
   .build();
 
+driver.manage().window().maximize();
 driver.manage().timeouts().setScriptTimeout(30000);
 
 driver.get(configs.server).then(function() {
@@ -30,7 +31,7 @@ driver.getCurrentUrl().then(function(url) {
     .get(page)
     .then(function () {
       AxeBuilder(driver)
-        .analyze(function (results) {
+        .analyze(function(results) {
           console.log(results);
         });
     });
