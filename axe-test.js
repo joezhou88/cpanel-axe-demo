@@ -6,7 +6,7 @@ var contents = fs.readFileSync("config.json");
 var configs = JSON.parse(contents);
 
 var driver = new WebDriver.Builder()
-  .forBrowser('firefox')
+  .forBrowser('chrome')
   .build();
 
 driver.manage().window().maximize();

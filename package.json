@@ -1,10 +1,10 @@
 {
         "name": "axe-testing",
-        "version": "0.0.1",
+        "version": "0.1.0",
         "private": true,
         "dependencies": {
                 "axe-core": "^2.3.0",
                 "axe-webdriverjs": "1.1.2",
-                "selenium-webdriver": "2.53.1"
+                "selenium-webdriver": ">= 3.4.0"
         }
 }
