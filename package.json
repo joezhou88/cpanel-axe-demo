@@ -5,6 +5,6 @@
         "dependencies": {
                 "axe-core": "^2.3.0",
                 "axe-webdriverjs": "1.1.2",
-                "selenium-webdriver": ">= 2.53.1"
+                "selenium-webdriver": "2.53.1"
         }
 }
