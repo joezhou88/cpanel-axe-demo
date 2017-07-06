@@ -9,7 +9,6 @@ var driver = new WebDriver.Builder()
   .forBrowser('chrome')
   .build();
 
-driver.manage().window().maximize();
 driver.manage().timeouts().setScriptTimeout(30000);
 
 driver.get(configs.server).then(function() {
