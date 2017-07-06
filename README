@@ -24,3 +24,5 @@ put the downloaded chromedriver in your $PATH, and make sure it is executable
 5. run the tests
 
     node axe-test.js
+
+6. please contact joe.zhou@cpanel.net if you spot a bug
