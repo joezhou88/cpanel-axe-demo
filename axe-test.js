@@ -35,3 +35,5 @@ driver.getCurrentUrl().then(function(url) {
         });
     });
 });
+
+driver.quit();

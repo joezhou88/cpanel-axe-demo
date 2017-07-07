@@ -1,0 +1,6 @@
+{
+  "user":"username",
+  "password":"xxxxx",
+  "server":"https://myserver.somewhere",
+  "page":"/the/page/to/test"
+}

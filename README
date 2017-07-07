@@ -1,19 +1,13 @@
 1. install node.js for your platform
 
+    https://nodejs.org/en/download/
+
 2. install required packages
 
     npm i
 
-3. create a config.json file for your server, like this,
-
-{
-  "user":"username",
-  "password":"XXXXXX",
-  "server":"https://joe64.dev.cpanel.net:2087",
-  "page":"/scripts/command?PFILE=Security_Center"
-}
-
-leave page as "" if you intend to test the homepage
+3. copy config.json.sample to config.json, and fill in the values appropriate
+   for your environment, leave page as "" if you intend to test the homepage
 
 4. download chromedriver from 
 
@@ -25,4 +19,4 @@ put the downloaded chromedriver in your $PATH, and make sure it is executable
 
     node axe-test.js
 
-6. please contact joe.zhou@cpanel.net if you spot a bug
+6. please send feedbacks to joe.zhou@cpanel.net
