@@ -1,6 +1,7 @@
 var AxeBuilder = require('axe-webdriverjs');
 var WebDriver = require('selenium-webdriver');
 var fs = require('fs');
+var util = require('util');
 
 var contents = fs.readFileSync("config.json");
 var configs = JSON.parse(contents);
@@ -31,7 +32,7 @@ driver.getCurrentUrl().then(function(url) {
     .then(function () {
       AxeBuilder(driver)
         .analyze(function(results) {
-          console.log(results);
+          console.log(util.inspect(results, true, 4));
         });
     });
 });
