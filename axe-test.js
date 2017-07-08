@@ -1,3 +1,4 @@
+require('chromedriver');
 var AxeBuilder = require('axe-webdriverjs');
 var WebDriver = require('selenium-webdriver');
 var fs = require('fs');
@@ -32,7 +33,20 @@ driver.getCurrentUrl().then(function(url) {
     .then(function () {
       AxeBuilder(driver)
         .analyze(function(results) {
-          console.log(util.inspect(results, true, 4));
+          Object.keys(results).forEach(function(statusKey) {
+            if (Array.isArray(results[statusKey])) {
+              results[statusKey].forEach(function(statusItem) {
+                statusItem["nodes"].forEach(function(node) {
+                  delete node["all"];
+                  delete node["any"];
+                  delete node["none"];
+                  delete node["impact"];
+                  delete node["target"];
+                });
+              });
+            }
+          });
+          console.log(JSON.stringify(results, null, '    '));
         });
     });
 });
