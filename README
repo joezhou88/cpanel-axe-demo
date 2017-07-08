@@ -9,14 +9,8 @@
 3. copy config.json.sample to config.json, and fill in the values appropriate
    for your environment, leave page as "" if you intend to test the homepage
 
-4. download chromedriver from 
+4. run the tests
 
-    http://chromedriver.storage.googleapis.com/index.html
+    npm start
 
-put the downloaded chromedriver in your $PATH, and make sure it is executable
-
-5. run the tests
-
-    node axe-test.js
-
-6. please send feedbacks to joe.zhou@cpanel.net
+5. please send feedbacks to joe.zhou@cpanel.net
