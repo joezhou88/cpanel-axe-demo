@@ -3,13 +3,14 @@
         "version": "0.1.0",
         "description": "Simple tool for accessibiltiy testing a web site",
         "main": "axe-test.js",
+        "author": "joe.zhou@cpanel.net",
         "scripts":{
-                "start": "node axe-test.js"
+                "start": "clear && node axe-test.js"
         },
         "dependencies": {
                 "axe-core": "^2.3.0",
-                "axe-webdriverjs": "1.1.2",
-                "selenium-webdriver": ">= 3.4.0",
+                "axe-webdriverjs": "^1.1.2",
+                "selenium-webdriver": "^3.4.0",
                 "chromedriver": "^2.30.1"
         }
 }

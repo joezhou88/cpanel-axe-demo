@@ -11,6 +11,8 @@ var driver = new WebDriver.Builder()
   .forBrowser('chrome')
   .build();
 
+// increase timeout to 30 seconds
+// default not enough for AxeBuilder to run 
 driver.manage().timeouts().setScriptTimeout(30000);
 
 driver.get(configs.server).then(function() {
@@ -19,10 +21,13 @@ driver.get(configs.server).then(function() {
   driver.findElement({id:'login_submit'}).click();
 });
 
+// allow time to transition away from login page
 driver.sleep(1000);
 
 driver.getCurrentUrl().then(function(url) {
   var page = url;
+
+  // splice out session token and add page url
   if ( configs.page.length > 0 ) {
     var pots = url.split("/");
     page = pots[0].concat("//", pots[2], "/", pots[3], configs.page);
@@ -37,11 +42,10 @@ driver.getCurrentUrl().then(function(url) {
             if (Array.isArray(results[statusKey])) {
               results[statusKey].forEach(function(statusItem) {
                 statusItem["nodes"].forEach(function(node) {
-                  delete node["all"];
-                  delete node["any"];
-                  delete node["none"];
-                  delete node["impact"];
-                  delete node["target"];
+                  var nodeKeys = ["all", "any", "none", "impact", "target"];
+                  nodeKeys.forEach(function(key){
+                    delete node[key];
+                  });
                 });
               });
             }
