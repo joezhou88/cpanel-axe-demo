@@ -27,12 +27,13 @@ driver.sleep(1000);
 driver.getCurrentUrl().then(function(url) {
   var baseURL = getBaseURL(url);
 
-  var page = baseURL;
-  if ( configs.page.length > 0 ) {
-    page = page.concat(configs.page);
-  }
-
-  scanURL(page);
+  configs.pages.forEach(function(page) {
+    var url = baseURL;
+    if ( page.length > 0 ) {
+      url = url.concat(page);
+    }
+    scanURL(url);
+  });
 });
 
 driver.quit();
@@ -49,10 +50,12 @@ function scanURL (url) {
   driver
     .get(url)
     .then(function () {
-      // driver.sleep(10000);
+
+      // all page to load fully
+      driver.sleep(2000);
+      
       AxeBuilder(driver)
         .analyze(function(results) {
-          //driver.sleep(5000);
           Object.keys(results).forEach(function(statusKey) {
             if (Array.isArray(results[statusKey])) {
               results[statusKey].forEach(function(statusItem) {
