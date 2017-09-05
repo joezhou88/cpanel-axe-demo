@@ -6,5 +6,6 @@
     "",
     "/first/page/to/test",
     "/another/page/to/test"
-  ]
+  ],
+  "violations_only" : 1
 }

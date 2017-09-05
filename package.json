@@ -1,6 +1,6 @@
 {
         "name": "axe-testing",
-        "version": "0.1.0",
+        "version": "0.2.0",
         "description": "Simple tool for accessibiltiy testing a web site",
         "main": "axe-test.js",
         "author": "joe.zhou@cpanel.net",

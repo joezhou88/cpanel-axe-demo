@@ -53,7 +53,7 @@ function scanURL (url) {
 
       // all page to load fully
       driver.sleep(2000);
-      
+
       AxeBuilder(driver)
         .analyze(function(results) {
           Object.keys(results).forEach(function(statusKey) {
@@ -68,6 +68,11 @@ function scanURL (url) {
               });
             }
           });
+          if ( configs.violations_only == 1 ) {
+            delete results["incomplete"];
+            delete results["inapplicable"];
+            delete results["passes"];
+          }
           console.log(JSON.stringify(results, null, '    '));
         });
     });
